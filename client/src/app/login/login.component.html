@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="form-container">
+      <form (ngSubmit)="login()" >
+          <h2>Login</h2>
+          <input type="text"  name="Username" placeholder="Username"  [(ngModel)]="loginData.Username"  required autocomplete="off">
+          <input type="password"  name="Password" placeholder="Password" [(ngModel)]="loginData.Password"  required>
+          <button type="submit">Login</button>
+          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+          <p class="message">Not registered? <a routerLink="/signup">Sign Up</a></p>
+      </form>
+  </div>
+</div>
+  

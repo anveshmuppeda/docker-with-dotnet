@@ -1,0 +1,14 @@
+
+<div class="container">
+  <div class="form-container">
+      <form (ngSubmit)="signup()" >    
+    <h2>Sign Up</h2>
+          <input type="text" name="Username" placeholder="Username" [(ngModel)]="signupData.Username" required >
+          <input type="password" name="Password" placeholder="Password" [(ngModel)]="signupData.Password"  required>
+          <input type="password" name="confirmPassword" placeholder="Confirm Password"[(ngModel)]="signupData.confirmPassword"  required>
+          <button type="submit">Sign Up</button>
+          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+          <p class="message">Already registered? <a routerLink="/login">Login</a></p>
+      </form>
+  </div>
+</div>
