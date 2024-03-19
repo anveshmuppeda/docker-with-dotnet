@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
       return;
     }
 
-    this.http.post('http://localhost:5106/api/Auth/signup', this.signupData)
+    this.http.post('http://165.232.144.187:8081/api/Auth/signup', this.signupData)
 .subscribe( response => {
           // Handle successful signup response
           console.log('Signup successful', response); 
