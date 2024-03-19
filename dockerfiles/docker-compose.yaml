@@ -2,7 +2,7 @@ version: '3'
 
 services:
   angular:
-    image: test:v6        # Docker image for the Angular application
+    image: angual-test:v1        # Docker image for the Angular application
     ports:
       - "80:4200"         # Map port 80 on the host to port 4200 in the container
     networks:
@@ -10,7 +10,7 @@ services:
     restart: always       # Restart policy for the container
 
   backend:
-    image: backend:v5     # Docker image for the backend application
+    image: backend-dotnet:v1     # Docker image for the backend application
     networks:
       - my_network        # Attach to the same "my_network" network
     ports:
