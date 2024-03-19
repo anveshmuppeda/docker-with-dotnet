@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  angular:
+    image: test:v6
+    ports:
+      - "80:4200"
+    networks:
+      - my_network
+    restart: always
+
+  backend:
+    image: backend:v5 
+    networks:
+      - my_network
+    ports:
+      - "8081:5106"
+    restart: always
+     
+networks:
+  my_network:
+    driver: bridge
+
+volumes:
+  db_data2:
