@@ -2,26 +2,26 @@ version: '3'
 
 services:
   angular:
-    image: angual-test:v1        # Docker image for the Angular application
+    image: anvesh35/docker-with-dotnet:angular-v1.0.0        # Docker image for the Angular application
     ports:
-      - "80:4200"         # Map port 80 on the host to port 4200 in the container
+      - "80:4200"                                            # Map port 80 on the host to port 4200 in the container
     networks:
-      - my_network        # Attach to the custom network named "my_network"
-    restart: always       # Restart policy for the container
+      - my_network                                           # Attach to the custom network named "my_network"
+    restart: always                                          # Restart policy for the container
 
   backend:
-    image: backend-dotnet:v1     # Docker image for the backend application
+    image: anvesh35/docker-with-dotnet:dotnet-v1.0.0         # Docker image for the backend application
     networks:
-      - my_network        # Attach to the same "my_network" network
+      - my_network                                           # Attach to the same "my_network" network
     ports:
-      - "8081:5106"       # Map port 8081 on the host to port 5106 in the container
-    restart: always       # Restart policy for the container
+      - "8081:5106"                                          # Map port 8081 on the host to port 5106 in the container
+    restart: always                                          # Restart policy for the container
     volumes:
       - db_login_data:/app/server/
      
 networks:
-  my_network:             # Define a custom bridge network named "my_network"
-    driver: bridge        # Use the bridge network driver
+  my_network:                                                # Define a custom bridge network named "my_network"
+    driver: bridge                                           # Use the bridge network driver
 
 volumes:
-  db_login_data:               # Define a named volume named "db_data2"
+  db_login_data:                                             # Define a named volume named "db_data2"
