@@ -1,3 +1,4 @@
+# Use Bitnami's dotnet-sdk image as the base image
 FROM bitnami/dotnet-sdk
 
 # Set the working directory
@@ -19,5 +20,4 @@ RUN dotnet restore
 EXPOSE 5106
 
 # Start the application using CMD
-	
 CMD ["dotnet", "run", "--urls", "http://0.0.0.0:5106"]

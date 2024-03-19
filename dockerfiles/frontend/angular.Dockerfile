@@ -25,10 +25,13 @@ RUN ng version
 # Expose port 4200 (default port used by ng serve)
 EXPOSE 4200
 
+# Copy the current directory contents into the container at /app
 COPY . .
 
+# Change working directory to the client folder
 WORKDIR /app/client
 
+# Install dependencies for the Angular application
 RUN npm install
 
 # By default, start the Angular application using ng serve
