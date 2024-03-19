@@ -17,7 +17,7 @@ services:
       - "8081:5106"       # Map port 8081 on the host to port 5106 in the container
     restart: always       # Restart policy for the container
     volumes:
-      - db_login_data:/app/server/login.db
+      - db_login_data:/app/server/
      
 networks:
   my_network:             # Define a custom bridge network named "my_network"
