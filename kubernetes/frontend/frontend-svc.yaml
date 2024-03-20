@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-angular
+spec:
+  selector:
+    app: webapp-angular
+    tier: frontend
+  ports:
+  - protocol: "TCP"
+    port: 4200
+    targetPort: 4200
+  type: NodePort

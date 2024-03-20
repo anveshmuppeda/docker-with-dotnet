@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angularwebapp1
+  labels:
+    app: webapp-angular
+    tier: frontend
+spec:
+  selector:
+    matchLabels:
+      app: webapp-angular
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webapp-angular
+        tier: frontend
+    spec:
+      containers:
+      - name: angularwebapp1
+        image: anvesh35/docker-with-dotnet:angular-v1.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 4200
