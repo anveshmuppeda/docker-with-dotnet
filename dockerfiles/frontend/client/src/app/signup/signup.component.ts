@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../environment';
 
 @Component({
   selector: 'app-signup',
@@ -27,7 +28,9 @@ export class SignupComponent implements OnInit {
       return;
     }
 
-    this.http.post('http://165.232.144.187:8081/api/Auth/signup', this.signupData)
+    //this.http.post('http://165.232.144.187:8081/api/Auth/signup', this.signupData)
+    const apiUrl = `${environment.apiUrl}/api/Auth/signup`;
+    this.http.post(apiUrl, this.signupData)
 .subscribe( response => {
           // Handle successful signup response
           console.log('Signup successful', response); 

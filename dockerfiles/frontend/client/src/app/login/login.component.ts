@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environment';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,9 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.http.post<any>('http://165.232.144.187:8081/api/Auth/login', this.loginData)
+    //this.http.post<any>('http://165.232.144.187:8081/api/Auth/login', this.loginData)
+    const apiUrl = `${environment.apiUrl}/api/Auth/login`;
+    this.http.post<any>(apiUrl, this.loginData)
     .subscribe(response => {
         // Handling  successful login response
         console.log('Login successful', response);
