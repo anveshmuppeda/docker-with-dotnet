@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./dockerfiles/dind/v1/ --file dockerfiles/dind/v1/Dockerfile --tag anvesh35/docker-with-dotnet:angular-v$(date +%s)
+      run: docker build ./dockerfiles/frontend/ --file dockerfiles/frontend/angular.Dockerfile --tag anvesh35/docker-with-dotnet:angular-v$(date +%s)
 
   push_to_docker_hub:
     runs-on: ubuntu-latest
