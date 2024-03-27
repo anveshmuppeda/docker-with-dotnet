@@ -18,6 +18,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Read CORS origin URL from environment variable
 var corsOriginUrl = builder.Configuration["CORS_ORIGIN_URL"];
 
+// Update to Environment variables
 builder.Services.AddCors(options =>
     {
         options.AddPolicy("AllowOrigin",
