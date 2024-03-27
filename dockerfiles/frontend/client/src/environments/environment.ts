@@ -4,5 +4,6 @@ export interface Environment {
   }
   
 export const environment = {
-    apiUrl: 'http://165.232.144.187:8081'
+    // apiUrl: 'http://165.232.144.187:8081'
+    apiUrl: '${API_URL}'
   }
