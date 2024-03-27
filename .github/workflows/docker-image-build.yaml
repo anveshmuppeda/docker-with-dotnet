@@ -19,9 +19,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # Build the Docker Image
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build ./dockerfiles/frontend/ --file dockerfiles/frontend/angular.Dockerfile --tag anvesh35/docker-with-dotnet:angular-v2.0.0
+    
+    # Push the Docker Image to Anvesh Repo
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
@@ -31,30 +34,36 @@ jobs:
       run: docker tag docker.io/anvesh35/docker-with-dotnet:angular-v2.0.0 anvesh35/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
     - name: Push Docker image to Docker Hub
       run: docker push anvesh35/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+
+    # Push the Docker Image to Srinu Repo
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME_SRINU }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN_SRINU }}
     - name: Tag Docker image
-      run: docker tag docker.io/library/docker-with-dotnet:angular-v2.0.0 tejasaisrinivaskhajjayam/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+      run: docker tag docker.io/anvesh35/docker-with-dotnet:angular-v2.0.0 tejasaisrinivaskhajjayam/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
     - name: Push Docker image to Docker Hub
       run: docker push tejasaisrinivaskhajjayam/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+    
+    # Push the Docker Image to Manasa Repo
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME_MANASA }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN_MANASA }}
     - name: Tag Docker image
-      run: docker tag docker.io/library/docker-with-dotnet:angular-v2.0.0 saimanasak/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+      run: docker tag docker.io/anvesh35/docker-with-dotnet:angular-v2.0.0 saimanasak/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
     - name: Push Docker image to Docker Hub
       run: docker push saimanasak/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+    
+    # Push the Docker Image to Nitish Repo
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME_NITISH }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN_NITISH }}
     - name: Tag Docker image
-      run: docker tag docker.io/library/docker-with-dotnet:angular-v2.0.0 nitishrao/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+      run: docker tag docker.io/anvesh35/docker-with-dotnet:angular-v2.0.0 nitishrao/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
     - name: Push Docker image to Docker Hub
       run: docker push nitishrao/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
