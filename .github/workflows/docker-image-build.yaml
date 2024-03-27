@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./dockerfiles/frontend/ --file dockerfiles/frontend/angular.Dockerfile --tag anvesh35/docker-with-dotnet:angular-v1.0.0
+      run: docker build ./dockerfiles/frontend/ --file dockerfiles/frontend/angular.Dockerfile --tag docker-with-dotnet:angular-v1.0.0
 
   push_to_anvesh_docker_hub:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME_ANVESH }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN_ANVESH }}
     - name: Tag Docker image
-      run: docker tag anvesh35/docker-with-dotnet:angular-v1.0.0 anvesh35/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+      run: docker tag docker-with-dotnet:angular-v1.0.0 anvesh35/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
     - name: Push Docker image to Docker Hub
       run: docker push anvesh35/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
   
@@ -47,7 +47,7 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME_SRINU }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN_SRINU }}
     - name: Tag Docker image
-      run: docker tag anvesh35/docker-with-dotnet:angular-v1.0.0 tejasaisrinivaskhajjayam/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+      run: docker tag docker-with-dotnet:angular-v1.0.0 tejasaisrinivaskhajjayam/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
     - name: Push Docker image to Docker Hub
       run: docker push tejasaisrinivaskhajjayam/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
   
@@ -61,7 +61,7 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME_MANASA }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN_MANASA }}
     - name: Tag Docker image
-      run: docker tag anvesh35/docker-with-dotnet:angular-v1.0.0 saimanasak/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+      run: docker tag docker-with-dotnet:angular-v1.0.0 saimanasak/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
     - name: Push Docker image to Docker Hub
       run: docker push saimanasak/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
   
@@ -75,6 +75,6 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME_NITISH }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN_NITISH }}
     - name: Tag Docker image
-      run: docker tag anvesh35/docker-with-dotnet:angular-v1.0.0 nitishrao/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+      run: docker tag docker-with-dotnet:angular-v1.0.0 nitishrao/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
     - name: Push Docker image to Docker Hub
       run: docker push nitishrao/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
