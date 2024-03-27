@@ -2,10 +2,10 @@
 
 # Replace placeholders in environment.ts with actual environment variable values
 if [ -z "$API_URL" ]; then
-  echo "API_URL2 environment variable is not set. Using default value."
+  echo "API_URL environment variable is not set. Using default value."
   export API_URL="http://127.0.0.1:8081"
 else
-  echo "Using API_URL2 from environment variable: $API_URL"
+  echo "Using API_URL from environment variable: $API_URL"
 fi
 
 # Run envsubst to replace placeholders in environment.ts with actual environment variable values

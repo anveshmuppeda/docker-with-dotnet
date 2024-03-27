@@ -15,10 +15,13 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// Read CORS origin URL from environment variable
+var corsOriginUrl = builder.Configuration["CORS_ORIGIN_URL"];
+
 builder.Services.AddCors(options =>
     {
         options.AddPolicy("AllowOrigin",
-            builder => builder.WithOrigins("http://165.232.144.187")
+            builder => builder.WithOrigins(corsOriginUrl)
                               .AllowAnyHeader()
                               .AllowAnyMethod());
     });

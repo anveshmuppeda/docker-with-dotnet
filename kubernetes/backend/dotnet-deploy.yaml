@@ -1,20 +1,21 @@
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dotnetwebapp
   labels:
-    app: webapp-dotnet
+    app: webapp-angular
     tier: backend
 spec:
   selector:
     matchLabels:
-      app: webapp-dotnet
+      app: webapp-angular
       tier: backend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: webapp-dotnet
+        app: webapp-angular
         tier: backend
     spec:
       containers:
