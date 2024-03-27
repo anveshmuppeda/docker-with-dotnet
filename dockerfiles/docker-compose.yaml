@@ -4,7 +4,7 @@ services:
   angular:
     image: anvesh35/docker-with-dotnet:angular-v1.0.0        # Docker image for the Angular application
     ports:
-      - "81:4200"                                            # Map port 80 on the host to port 4200 in the container
+      - "80:4200"                                            # Map port 80 on the host to port 4200 in the container
     networks:
       - my_network                                           # Attach to the custom network named "my_network"
     restart: always                                          # Restart policy for the container
