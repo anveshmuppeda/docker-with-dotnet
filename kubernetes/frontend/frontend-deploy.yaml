@@ -19,6 +19,9 @@ spec:
     spec:
       containers:
       - name: angularwebapp1
+        env:
+        - name: API_URL
+          value: http://165.232.144.187:8081
         image: anvesh35/docker-with-dotnet:angular-vdc711b3
         imagePullPolicy: Always
         ports:

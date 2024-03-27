@@ -1,0 +1,25 @@
+kind: Deployment
+metadata:
+  name: dotnetwebapp
+  labels:
+    app: webapp-dotnet
+    tier: backend
+spec:
+  selector:
+    matchLabels:
+      app: webapp-dotnet
+      tier: backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: webapp-dotnet
+        tier: backend
+    spec:
+      containers:
+      - image: anvesh35/docker-with-dotnet:dotnet-v1.0.0
+        name: dotnet
+        ports:
+        - containerPort: 5106
+          
