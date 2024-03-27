@@ -67,3 +67,14 @@ jobs:
       run: docker tag docker.io/anvesh35/docker-with-dotnet:angular-v2.0.0 nitishrao/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
     - name: Push Docker image to Docker Hub
       run: docker push nitishrao/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+    
+    # Push the Docker Image to Vishwa Repo
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME_NITISH }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN_NITISH }}
+    - name: Tag Docker image
+      run: docker tag docker.io/anvesh35/docker-with-dotnet:angular-v2.0.0 vishwasenaraidu08/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
+    - name: Push Docker image to Docker Hub
+      run: docker push vishwasenaraidu08/docker-with-dotnet:angular-v$(git rev-parse --short HEAD)
