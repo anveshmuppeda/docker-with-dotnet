@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: angularwebapp1
-        image: anvesh35/docker-with-dotnet:angular-v1.0.0
+        image: anvesh35/docker-with-dotnet:angular-vdc711b3
         imagePullPolicy: Always
         ports:
         - containerPort: 4200
