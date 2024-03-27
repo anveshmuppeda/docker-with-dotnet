@@ -22,7 +22,7 @@ jobs:
     # Build the Docker Image
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./dockerfiles/backend/ --file dockerfiles/frontend/dotnet.Dockerfile --tag anvesh35/docker-with-dotnet:dotnet-v2.0.0
+      run: docker build ./dockerfiles/backend/ --file dockerfiles/backend/dotnet.Dockerfile --tag anvesh35/docker-with-dotnet:dotnet-v2.0.0
     
     # Push the Docker Image to Anvesh Repo
     - name: Log in to Anvesh Docker Hub
