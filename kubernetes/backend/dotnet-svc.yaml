@@ -1,34 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-dotnet
-spec:
-  selector:
-    app: webapp-angular
-    tier: backend
-  ports:
-  - protocol: "TCP"
-    port: 5106
-    targetPort: 5106
-  type: NodePort
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: dotnet-2
-spec:
-  selector:
-    app: webapp-angular
-    tier: backend
-  type: ClusterIP
-  ports:
-  - protocol: "TCP"
-    port: 5106
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql-svc
+  name: dotnet-svc
 spec:
   selector:
     app: webapp-angular

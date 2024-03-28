@@ -23,7 +23,7 @@ public class AuthController : ControllerBase
         var newUser = new User { Username = credentials.Username, PasswordHash = HashPassword(credentials.Password) };
         _context.Users.Add(newUser);
         await _context.SaveChangesAsync();
-        return Ok();
+        return Ok("Signup Successful!!");
     }
 
     [HttpPost("login")]
@@ -34,7 +34,7 @@ public class AuthController : ControllerBase
             return Unauthorized();
 
         //  JWT token 
-        return Ok();
+        return Ok("Login Successful!!");
     }
 
     private string HashPassword(string password)

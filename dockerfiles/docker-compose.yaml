@@ -20,6 +20,8 @@ services:
     restart: always                                          # Restart policy for the container
     volumes:
       - db_login_data:/app/server/
+    environment:
+      CORS_ORIGIN_URL: http://165.232.144.187
      
 networks:
   my_network:                                                # Define a custom bridge network named "my_network"
