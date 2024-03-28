@@ -21,7 +21,7 @@ spec:
       - name: angularwebapp1
         env:
         - name: API_URL
-          value: http://dotnet-svc:5106
+          value: http://159.89.136.82:32071
         image: anvesh35/docker-with-dotnet:angular-vdc711b3
         imagePullPolicy: Always
         ports:

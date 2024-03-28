@@ -10,18 +10,5 @@ spec:
   - protocol: "TCP"
     port: 4200
     targetPort: 4200
+    nodePort: 32070
   type: NodePort
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: angular-svc-ci
-spec:
-  selector:
-    app: webapp-angular
-    tier: frontend
-  ports:
-  - protocol: "TCP"
-    port: 4200
-    targetPort: 4200
-  clusterIP: None

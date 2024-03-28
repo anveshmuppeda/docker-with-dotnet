@@ -19,10 +19,10 @@ spec:
         tier: backend
     spec:
       containers:
-      - image: anvesh35/docker-with-dotnet:dotnet-v3434cbd
+      - image: anvesh35/docker-with-dotnet:dotnet-vcdaaa30
         name: dotnet
         env:
         - name: CORS_ORIGIN_URL
-          value: http://angular-svc:4200
+          value: http://159.89.136.82:32070
         ports:
         - containerPort: 5106

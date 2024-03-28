@@ -10,4 +10,5 @@ spec:
   - protocol: "TCP"
     port: 5106
     targetPort: 5106
-  clusterIP: None
+    nodePort: 32071
+  type: NodePort

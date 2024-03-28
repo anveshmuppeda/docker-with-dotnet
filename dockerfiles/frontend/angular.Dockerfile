@@ -13,6 +13,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 RUN apt-get update && apt-get install -y \
     curl \
     gnupg \
+    vim \
     gettext-base \
     && rm -rf /var/lib/apt/lists/*
 
