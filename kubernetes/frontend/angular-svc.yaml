@@ -1,3 +1,4 @@
+# Service Manifest file for frontend Angular Application 
 apiVersion: v1
 kind: Service
 metadata:
@@ -6,9 +7,11 @@ spec:
   selector:
     app: webapp-angular
     tier: frontend
+    app-version: v2.0.0
   ports:
   - protocol: "TCP"
     port: 4200
     targetPort: 4200
+    # If you modify this nodePort, ensure that you also update the CORS_ORIGIN_URL in the dotnet-deploy manifest.
     nodePort: 32070
   type: NodePort

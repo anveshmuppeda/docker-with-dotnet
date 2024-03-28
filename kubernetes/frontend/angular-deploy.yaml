@@ -1,7 +1,8 @@
+# Deployment Manifest file for frontend Angular Application 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: angularwebapp1
+  name: angular-app
   labels:
     app: webapp-angular
     tier: frontend
@@ -10,6 +11,7 @@ spec:
     matchLabels:
       app: webapp-angular
       tier: frontend
+      app-version: v2.0.0
   replicas: 1
   template:
     metadata:
@@ -18,11 +20,19 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: angularwebapp1
+      - name: angular
         env:
         - name: API_URL
+          # # This is the URL where backend Dotnet is running on with Dotnet service Nodeport
           value: http://159.89.136.82:32071
         image: anvesh35/docker-with-dotnet:angular-vdc711b3
         imagePullPolicy: Always
         ports:
         - containerPort: 4200
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"

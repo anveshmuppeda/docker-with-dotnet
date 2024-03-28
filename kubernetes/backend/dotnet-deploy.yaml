@@ -1,15 +1,18 @@
+# Deployment Manifest file for backend Dotnet Application 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnetwebapp
+  name: dotnet-app
   labels:
     app: webapp-angular
     tier: backend
+    app-version: v2.0.0
 spec:
   selector:
     matchLabels:
       app: webapp-angular
       tier: backend
+      app-version: v2.0.0
   strategy:
     type: Recreate
   template:
@@ -17,12 +20,21 @@ spec:
       labels:
         app: webapp-angular
         tier: backend
+        app-version: v2.0.0
     spec:
       containers:
       - image: anvesh35/docker-with-dotnet:dotnet-vcdaaa30
         name: dotnet
         env:
         - name: CORS_ORIGIN_URL
+          # This is the URL where frontend Angular is running on with Angular service Nodeport
           value: http://159.89.136.82:32070
         ports:
         - containerPort: 5106
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
