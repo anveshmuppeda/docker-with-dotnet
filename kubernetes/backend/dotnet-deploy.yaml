@@ -19,7 +19,7 @@ spec:
         tier: backend
     spec:
       containers:
-      - image: anvesh35/docker-with-dotnet:dotnet-vcdaaa30
+      - image: anvesh35/docker-with-dotnet:dotnet-v3434cbd
         name: dotnet
         env:
         - name: CORS_ORIGIN_URL
