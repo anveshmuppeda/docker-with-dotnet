@@ -9,7 +9,10 @@ To streamline deployment, we’ve crafted custom Docker images for both the back
 ### Deploy Your Application:  
 Open a terminal and navigate to the directory containing your docker-compose.yml file.  
 Run the docker-compose up command to start the deployment.  
-```docker-compose up -d```  
+
+```
+docker-compose up -d
+```   
 
 ### Verify Deployment:  
 Access your application using the specified ports (e.g., http://localhost:port).  
