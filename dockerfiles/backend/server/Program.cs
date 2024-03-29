@@ -21,6 +21,8 @@ var corsOriginUrl = builder.Configuration["CORS_ORIGIN_URL"];
 // Update to Environment variables
 builder.Services.AddCors(options =>
     {
+        // If you want to hardcode the crosOriginUrl
+        // builder => builder.WithOrigins("http://165.232.144.187")
         options.AddPolicy("AllowOrigin",
             builder => builder.WithOrigins(corsOriginUrl)
                               .AllowAnyHeader()
