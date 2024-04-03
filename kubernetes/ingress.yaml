@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: angular-dotnet-ingress
+  labels:
+    app: webapp-angular
+    tier: ingress-resource
+    app-version: v2.0.0
+  annotations:
+    nginx.ingress.kubernetes.io/add-base-url: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      # If app is hosted with a prefix, e.g. http://foo/myapp you needed to set the base-href in angular to /myapp.
+      - path: /myapp/
+        pathType: Prefix
+        backend:
+          service:
+            name: angular-svc
+            port:
+              number: 4200
+      - path: /(.*\.(js|css|png|jpg|jpeg|gif|svg|ico|json))$
+        pathType: Prefix
+        backend:
+          service:
+            name: angular-svc
+            port:
+              number: 4200
+      
