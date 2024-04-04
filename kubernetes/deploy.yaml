@@ -99,7 +99,7 @@ spec:
         env:
         - name: CORS_ORIGIN_URL
           # This is the URL where frontend Angular is running on with Angular service Nodeport
-          value: http://161.35.240.187
+          value: http://159.89.136.82:32070
         ports:
         - containerPort: 5106
         resources:
