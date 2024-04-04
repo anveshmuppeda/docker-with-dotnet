@@ -1,0 +1,135 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: angular-dotnet
+  labels:
+    app: webapp-angular
+    tier: Namespace
+    app-version: v2.0.0
+--- 
+# Deployment Manifest file for frontend Angular Application 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-app
+  namespace: angular-dotnet
+  labels:
+    app: webapp-angular
+    tier: frontend
+    app-version: v2.0.0
+spec:
+  selector:
+    matchLabels:
+      app: webapp-angular
+      tier: frontend
+      app-version: v2.0.0
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webapp-angular
+        tier: frontend
+        app-version: v2.0.0
+    spec:
+      containers:
+      - name: angular
+        env:
+        - name: API_URL
+          # # This is the URL where backend Dotnet is running on with Dotnet service Nodeport
+          value: http://159.89.136.82:32071
+        image: anvesh35/docker-with-dotnet:angular-v0c3a64f
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 4200
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "100m"
+          limits:
+            memory: "1024Mi"
+            cpu: "200m"
+--- 
+# Service Manifest file for frontend Angular Application 
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-np-svc
+  namespace: angular-dotnet
+spec:
+  selector:
+    app: webapp-angular
+    tier: frontend
+    app-version: v2.0.0
+  ports:
+  - protocol: "TCP"
+    port: 4200
+    targetPort: 4200
+    # If you modify this nodePort, ensure that you also update the CORS_ORIGIN_URL in the dotnet-deploy manifest.
+    nodePort: 32070
+  type: NodePort
+--- 
+# Deployment Manifest file for backend Dotnet Application 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-app
+  namespace: angular-dotnet
+  labels:
+    app: webapp-angular
+    tier: backend
+    app-version: v2.0.0
+spec:
+  selector:
+    matchLabels:
+      app: webapp-angular
+      tier: backend
+      app-version: v2.0.0
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: webapp-angular
+        tier: backend
+        app-version: v2.0.0
+    spec:
+      containers:
+      - image: anvesh35/docker-with-dotnet:dotnet-v0c3a64f
+        name: dotnet
+        env:
+        - name: CORS_ORIGIN_URL
+          # This is the URL where frontend Angular is running on with Angular service Nodeport
+          value: http://161.35.240.187
+        ports:
+        - containerPort: 5106
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "200m"
+--- 
+# Service Manifest file for backend Dotnet Application 
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-np-svc
+  namespace: angular-dotnet
+spec:
+  selector:
+    app: webapp-angular
+    tier: backend
+    app-version: v2.0.0
+  # ports:
+  #   - protocol: TCP
+  #     port: 5106
+  #     targetPort: 5106
+  # IF YOU WANT TO MAKE THIS SERVICE AS NODEPORT THEN USE BELOW SECTION
+  ports:
+  - protocol: "TCP"
+    port: 5106
+    targetPort: 5106
+    # If you modify this nodePort, ensure that you also update the API_URL in the angular-deploy manifest.
+    nodePort: 32071
+  type: NodePort

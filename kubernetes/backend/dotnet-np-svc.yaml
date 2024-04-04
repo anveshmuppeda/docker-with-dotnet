@@ -1,0 +1,22 @@
+# Service Manifest file for backend Dotnet Application 
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-np-svc
+spec:
+  selector:
+    app: webapp-angular
+    tier: backend
+    app-version: v2.0.0
+  # ports:
+  #   - protocol: TCP
+  #     port: 5106
+  #     targetPort: 5106
+  # IF YOU WANT TO MAKE THIS SERVICE AS NODEPORT THEN USE BELOW SECTION
+  ports:
+  - protocol: "TCP"
+    port: 5106
+    targetPort: 5106
+    # If you modify this nodePort, ensure that you also update the API_URL in the angular-deploy manifest.
+    nodePort: 32071
+  type: NodePort

@@ -29,4 +29,10 @@ spec:
             name: angular-svc
             port:
               number: 4200
-      
+      - path: /dotnet/
+        pathType: Prefix
+        backend:
+          service:
+            name: dotnet-svc
+            port:
+              number: 5106
